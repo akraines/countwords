@@ -10,13 +10,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        var counts = new Dictionary<string, int>();
+        var counts = new Dictionary<string, int>(StringComparer.InvariantCultureIgnoreCase);
         string line;
         while ((line = Console.ReadLine()) != null)
         {
-            line = line.ToLower();
             var words = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            foreach (string word in words)
+            foreach (var word in words)
             {
                 counts[word] = counts.GetValueOrDefault(word, 0) + 1;
             }
